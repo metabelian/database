@@ -88,7 +88,7 @@ app.post('/',function(req,res, next){
 	  //if the name was entered
 	  if(req.body.name != "")
 	  {
-		  pool.query("INSERT INTO workouts (`name`), (`reps`), (`weight`), (`date`), (`lbs`) VALUES (?), (?), (?), (?), (?)",
+		  pool.query("INSERT INTO workouts `name`, `reps`, `weight`, `date`, `lbs` VALUES ?, ?, ?, ?, ?",
 					[req.body.name, req.body.reps, req.body.weight, req.body.date, req.body.lbskg], function(err, result)
 					{
 						if(err)
@@ -160,7 +160,7 @@ app.get('/reset-table',function(req,res,next){
     })
   });
 });
-
+/*
 //get and display rows
 app.get('/',function(req,res,next){
 	console.log("Main-page");
@@ -174,7 +174,7 @@ app.get('/',function(req,res,next){
     res.render('newSession', context);
   });
 });
-
+*/
 
 app.get('/count', function(req, res)
 {
