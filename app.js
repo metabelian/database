@@ -57,15 +57,25 @@ app.get('/',function(req,res,next){
 app.post('/',function(req,res, next){
   var context = {};
   console.log(req.body);
-  /*
+  
   //if user hits delete
   if(req.body["delete"])
   {
-	  
+		var index = req.body.delete[1];
+		
+		pool.query("DELETE FROM workouts WHERE id= ?", [index], function(err, result)
+		{
+			if(err)
+			{
+				console.log("ERROR");
+				next(err);
+				return;
+			}
+		});
   }
-  */
+  
   //if user adds new workout
-  if(req.body["newWorkout"])
+  else if(req.body["newWorkout"])
   {
 	  //if user entered new data
 	  if(req.body.name != "")
