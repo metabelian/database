@@ -16,7 +16,7 @@ app.use(session({secret: 'donttell'}));
 //handlebar stuff
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 3003);
+app.set('port', 3000);
 
 var url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=2&api_key=ppI8P43zk3TFvmZqTVgwSL1kQHQoqLzTcf0mxv9l";
 
