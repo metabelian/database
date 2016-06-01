@@ -144,6 +144,7 @@ app.post('/',function(req,res, next){
 
 //reset database copy
 app.get('/reset-table',function(req,res,next){
+	console.log("reset-table");
   var context = {};
   pool.query("DROP TABLE IF EXISTS workouts", function(err){
     var createString = "CREATE TABLE workouts("+
@@ -162,6 +163,7 @@ app.get('/reset-table',function(req,res,next){
 
 //get and display rows
 app.get('/',function(req,res,next){
+	console.log("Main-page");
   var context = {};
   pool.query('SELECT * FROM todo', function(err, rows, fields){
     if(err){
