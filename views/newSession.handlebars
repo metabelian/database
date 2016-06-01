@@ -1,0 +1,52 @@
+<h2>Welcome to Chris' Workout Page</h2>
+
+
+<form action="/" method="post">
+	<fieldset>
+	<legend>New Workout!</legend>
+		<label for="name">NAME:</label>
+		<input id="name" type="text" name="name">
+		<label for="reps">REPS:</label>
+		<input id="reps" type="number" name="reps">
+		<label for="weight">WEIGHT:</label>
+		<input id="weight" type="number" name="weight">
+		<label for="date">DATE:</label>
+		<input id="date" type="date" name="date">
+		<label for="lbskg">LBS/KG (1/0):</label>
+		<input id="lbskg" type="number" name="lbskg">
+		<input type="submit" name = "newWorkout">
+	</fieldset>
+</form>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Reps</th>
+		<th>Weight</th>
+		<th>Date</th>
+		<th>Lbs/Kg</th>
+	</tr>
+	{{#each rows}}
+	<tr>
+		<td>{{this.name}}</td>
+		<td>{{this.reps}}</td>
+		<td>{{this.weight}}</td>
+		<td>{{this.date}}</td>
+		<td>{{this.lbskg}}</td>
+	</tr>
+	{{else}}
+	<tr>
+		<td>NULL</td>
+		<td>NULL</td>
+		<td>NULL</td>
+		<td>NULL</td>
+		<td>NULL</td>
+	</tr>
+	{{/each}}
+</table>
+
+
+
+<form>
+
+</form>
