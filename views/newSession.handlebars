@@ -32,10 +32,10 @@
 		<td>{{this.reps}}</td>
 		<td>{{this.weight}}</td>
 		<td>{{this.date}}</td>
-		{{#if this.lbskg == 0}}
-			<td>kgs</td>
-		{{else}}
+		{{#if this.lbskg}}
 			<td>lbs</td>
+		{{else}}
+			<td>kgs</td>
 		{{/if}}
 	</tr>
 	{{else}}
