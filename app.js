@@ -94,7 +94,7 @@ app.post('/',function(req,res, next){
 		}
 	
 		context.rows = rows;
-		console.log(JSON.stringify(context.rows));
+		//console.log(JSON.stringify(context.rows));
 	 });
 	 
 	 
@@ -131,7 +131,7 @@ app.get('/',function(req,res,next){
       return;
     }
     context.rows = rows;
-	console.log(json.stringify(context.rows));
+	console.log(JSON.stringify(context.rows));
     res.render('newSession', context);
   });
 });
