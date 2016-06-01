@@ -65,7 +65,7 @@ app.post('/',function(req,res, next){
   }
   */
   //if user adds new workout
-  else if(req.body["newWorkout"])
+  if(req.body["newWorkout"])
   {
 	  //if user entered new data
 	  if(req.body.name != "")
