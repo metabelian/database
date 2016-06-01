@@ -43,31 +43,6 @@ app.get('/',function(req,res,next){
 		return;
 	}
 	
-	/*
-	if(req.body.name = 'party1')
-	{
-		req.session.name = 'party'
-		req.session.val = 1;
-		context.val = "I like to move it move it.";
-		req.render('party', context);
-	}
-	
-	if (req.body.name = 'party2')
-	{
-		req.session.name = 'party'
-		req.session.val = 2;
-		context.val = "I like to move it move it.  I like to move it move it.";
-		req.render('party', context);
-	}
-	
-	if (req.body.name = 'party3')
-	{
-		req.session.name = 'party'
-		req.session.val = 3;
-		context.val = "I like to move it move it.  I like to move it move it.  I like to ... MOVE IT!!";
-		req.render('party', context);
-	}
-	/
 	
   //If there is no session, go to the main page.
 	if(!req.session.name)
@@ -86,7 +61,7 @@ app.post('/',function(req,res, next){
   
   if(req.body["newWorkout"])
   {
-	  //if the name was entered
+	  //if user entered new data
 	  if(req.body.name != "")
 	  {
 		  /*
@@ -106,49 +81,20 @@ app.post('/',function(req,res, next){
 							return;
 						}
 						
-			
+						
 					});
 	  }
   }
   
-  /*
-  if(req.body["changeColor"])
-  {
-	  console.log("in changeColor");
-	  req.session.name = req.body.name;
-  }
-  */
-  //If there is no session, go to the main page.
-
-  if(!req.session.name){
+	//make page w/ new table data
+	 pool.query('SELECT * FROM workouts', function(err, rows, fields){
+		if(err){
+		next(err);
+		return;
+		}
+    context.rows = rows;
+	console.log(json.stringify(context.rows));
     res.render('newSession', context);
-    return;
-  }
- 
-
-  
-  //else render the page based upon the form sent
-  context.name = req.session.name;
-  console.log(context.name);
-  res.render('newSession', context);
-  
-  /*
-  if (req.session.name = "bluePage")
-  {
-	  context.name = 'bluePage';
-	  res.render('bluepage', context);
-  }
-  
-  else if (req.session.name = "redPage")
-  {
-	  res.render()
-  }
-  
-  else if (req.session.name = "greenPage")
-  {
-	  
-  }
-  */
 });
 
 
@@ -181,7 +127,7 @@ app.get('/',function(req,res,next){
       return;
     }
     context.rows = rows;
-	//console.log(context.rows);
+	console.log(json.stringify(context.rows));
     res.render('newSession', context);
   });
 });
