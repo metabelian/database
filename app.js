@@ -88,11 +88,17 @@ app.post('/',function(req,res, next){
 	  //if the name was entered
 	  if(req.body.name != "")
 	  {
+		  var lbskg;
+		  if (req.body.lbskg)
+			  lbskg = true;
+		  else
+			  lbskg = false;
 		  pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?, ?, ?, ?, ?)",
-					[req.body.name, req.body.reps, req.body.weight, req.body.date, req.body.lbskg], function(err, result)
+					[req.body.name, req.body.reps, req.body.weight, req.body.date, lbskg], function(err, result)
 					{
 						if(err)
 						{
+							console.log("error");
 							next(err);
 							return;
 						}
@@ -110,17 +116,18 @@ app.post('/',function(req,res, next){
   }
   */
   //If there is no session, go to the main page.
+
   if(!req.session.name){
     res.render('newSession', context);
     return;
   }
-  
+ 
 
   
   //else render the page based upon the form sent
   context.name = req.session.name;
   console.log(context.name);
-  res.render('colorPage', context);
+  res.render('newSession', context);
   
   /*
   if (req.session.name = "bluePage")
@@ -160,7 +167,7 @@ app.get('/reset-table',function(req,res,next){
     })
   });
 });
-/*
+
 //get and display rows
 app.get('/',function(req,res,next){
 	console.log("Main-page");
@@ -174,7 +181,7 @@ app.get('/',function(req,res,next){
     res.render('newSession', context);
   });
 });
-*/
+
 
 app.get('/count', function(req, res)
 {
