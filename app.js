@@ -94,7 +94,7 @@ app.post('/',function(req,res, next){
 		}
 	
 		context.rows = rows;
-		console.log(json.stringify(context.rows));
+		console.log(JSON.stringify(context.rows));
 	 });
 	 
 	 
