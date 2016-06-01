@@ -97,7 +97,7 @@ app.post('/',function(req,res, next){
 			  lbskg = false;
 		  */
 		  pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?, ?, ?, ?, ?)",
-					[req.body.name, req.body.reps, req.body.weight, req.body.date, req.body.lbs], function(err, result)
+					[req.body.name, req.body.reps, req.body.weight, req.body.date, req.body.lbskg], function(err, result)
 					{
 						if(err)
 						{
