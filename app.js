@@ -177,7 +177,8 @@ app.get('/',function(req,res,next){
       next(err);
       return;
     }
-    context.results = JSON.stringify(rows);
+    context.rows = JSON.stringify(rows);
+	console.log(context.rows);
     res.render('newSession', context);
   });
 });
