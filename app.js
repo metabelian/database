@@ -92,10 +92,12 @@ app.post('/',function(req,res, next){
 		next(err);
 		return;
 		}
+	
+		context.rows = rows;
+		console.log(json.stringify(context.rows));
 	 });
 	 
-    context.rows = rows;
-	console.log(json.stringify(context.rows));
+	 
     res.render('newSession', context);
 });
 
