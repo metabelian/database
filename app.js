@@ -89,12 +89,13 @@ app.post('/',function(req,res, next){
 	//make page w/ new table data
 	 pool.query('SELECT * FROM workouts', function(err, rows, fields){
 		if(err){
-		next(err);
-		return;
+			console.log("error");
+			next(err);
+			return;
 		}
 	
 		context.rows = rows;
-		//console.log(JSON.stringify(context.rows));
+		console.log(JSON.stringify(context.rows));
 	 });
 	 
 	 
