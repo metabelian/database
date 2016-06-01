@@ -37,6 +37,17 @@
 		{{else}}
 			<td>kgs</td>
 		{{/if}}
+		<td>
+			<form action>
+				<button name="delete" class={{this.id}}>Delete</button>
+			</form>
+		</td>
+		
+		<td>
+			<form>
+				<button name="edit" class={{this.id}}>Edit</button>
+			</form>
+		</td>
 	</tr>
 	{{else}}
 	<tr>
