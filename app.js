@@ -56,7 +56,7 @@ app.get('/',function(req,res,next){
 
 app.post('/',function(req,res, next){
   var context = {};
-  
+  console.log("Req.Body = ");
   console.log(req.body);
   
   if(req.body["newWorkout"])
