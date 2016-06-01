@@ -39,13 +39,15 @@
 		{{/if}}
 		<td>
 			<form action="/"  method="post">
-				<button name="delete" class={{this.id}}>Delete</button>
+				<button name="delete">Delete</button>
+				<input type="hidden" name="delete" value={{this.id}}>
 			</form>
 		</td>
 		
 		<td>
 			<form action="/" method="post">
-				<button name="edit" class={{this.id}}>Edit</button>
+				<button name="edit">Edit</button>
+				<input type="hidden" name="edit" value={{this.id}}>
 			</form>
 		</td>
 	</tr>

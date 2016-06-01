@@ -56,10 +56,16 @@ app.get('/',function(req,res,next){
 
 app.post('/',function(req,res, next){
   var context = {};
-  console.log("Req.Body = ");
   console.log(req.body);
-  
-  if(req.body["newWorkout"])
+  /*
+  //if user hits delete
+  if(req.body["delete"])
+  {
+	  
+  }
+  */
+  //if user adds new workout
+  else if(req.body["newWorkout"])
   {
 	  //if user entered new data
 	  if(req.body.name != "")
