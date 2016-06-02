@@ -89,9 +89,13 @@ app.post('/',function(req,res, next){
 		}
 	
 		context.edit = rows[0];
+		console.log(context.edit.date);
 		//trim date
 		if (context.edit.date)
-			context.edit.date = context.edit.date.substring(0, 10);
+		{
+			context.edit.trimDate = context.edit.date.substring(0, 10);
+			console.log(context.edit.trimDate);
+		}
 		console.log(JSON.stringify(context.edit));
 	 });
   }
