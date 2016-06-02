@@ -75,7 +75,7 @@ app.post('/',function(req,res, next){
   }
   
   //if user hits edit
-  else if (req.body[edit])
+  else if (req.body["edit"])
   {
 	  console.log("IN EDIT");
 	  var index = req.body.edit[1];
