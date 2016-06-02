@@ -89,14 +89,11 @@ app.post('/',function(req,res, next){
 		}
 	
 		context.edit = rows[0];
-		console.log(context.edit.date);
 		//trim date
 		if (context.edit.date)
 		{
 			context.edit.trimDate = JSON.stringify(context.edit.date).substring(1, 11);
-			console.log(context.edit.trimDate);
 		}
-		console.log(JSON.stringify(context.edit));
 	 });
   }
   
