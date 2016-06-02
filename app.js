@@ -77,7 +77,6 @@ app.post('/',function(req,res, next){
   //if user hits edit
   else if (req.body["edit"])
   {
-	  console.log("IN EDIT");
 	  var index = req.body.edit[1];
 	  
 	  //get the value in the edit rows
