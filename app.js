@@ -3,8 +3,8 @@ var express = require('express');
 var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var request = require('request');
-//post stuff
 
+//post stuff
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -19,7 +19,6 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 3000);
 
-var url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=2&api_key=ppI8P43zk3TFvmZqTVgwSL1kQHQoqLzTcf0mxv9l";
 
 //database stuff
 var mysql = require('mysql');
@@ -37,6 +36,7 @@ function addRow(data, tableID)
 	var table = document.getElementById(tableID);
 	newRow = table.insertRow(table.length);
 	
+	newRow.id = data.id;
 	newRow.insertCell(0).textContent = data.name;
 	newRow.insertCell(1).textContent = data.reps;
 	newRow.insertCell(2).textContent = data.weight;
