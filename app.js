@@ -74,6 +74,26 @@ app.post('/',function(req,res, next){
 		});
   }
   
+  //if user hits edit
+  else if (req.body[edit])
+  {
+	  console.log("IN EDIT");
+	  var index = req.body.edit[1];
+	  
+	  //get the value in the edit rows
+	  pool.query('SELECT * FROM workouts WHERE id=?',[index] function(err, rows, fields){
+		if(err){
+			console.log("error");
+			next(err);
+			return;
+		}
+	
+		context.edit = rows[0];
+		console.log(JSON.stringify(context.edit));
+		res.render('newSession', context);
+	 });
+  }
+  
   //if user adds new workout
   else if(req.body["newWorkout"])
   {
@@ -116,7 +136,6 @@ app.post('/',function(req,res, next){
 	 });
 	 
 	 
-    
 });
 
 
