@@ -96,6 +96,21 @@ app.post('/',function(req,res, next){
 	 });
   }
   
+  //if user submits a new edit
+  else if (req.body["editWorkout"])
+  {
+	  pool.query("UPDATE workouts SET name=?, reps=?, weight=?, date=?, lbs=? WHERE id=?",
+				[req.body.name, req.body.reps, req.body.weight, req.body.date, req.body.lbskg, req.body.index], function(err, result)
+				{
+					if(err)
+					{
+						console.log("error");
+						next(err);
+						return;
+					}
+				});
+  }
+  
   //if user adds new workout
   else if(req.body["newWorkout"])
   {
