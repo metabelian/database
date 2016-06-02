@@ -81,7 +81,7 @@ app.post('/',function(req,res, next){
 	  var index = req.body.edit[1];
 	  
 	  //get the value in the edit rows
-	  pool.query('SELECT * FROM workouts WHERE id=?',[index] function(err, rows, fields){
+	  pool.query('SELECT * FROM workouts WHERE id=?',[index], function(err, rows, fields){
 		if(err){
 			console.log("error");
 			next(err);
