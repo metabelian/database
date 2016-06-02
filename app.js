@@ -31,6 +31,32 @@ var pool = mysql.createPool({
   database: 'student'
 });
 
+//function to add row to table
+function addRow(data, tableID)
+{
+	var table = document.getElementById(tableID);
+	newRow = table.insertRow(table.length);
+	
+	newRow.insertCell(0).textContent = data.name;
+	newRow.insertCell(1).textContent = data.reps;
+	newRow.insertCell(2).textContent = data.weight;
+	newRow.insertCell(3).textContent = data.date;
+	newRow.insertCell(4).textContent = data.lbs;
+}
+
+//function to remove row from table
+function removeRow(data, tableID)
+{
+	var table = document.getElementById(tableID);
+	for (var i = 0; i < table.length; i++)
+	{
+		if (table[i].id = data.id)
+		{
+			table.deleteRow(i);
+			return;
+		}
+	}
+}
 
 
 app.post('/',function(req,res, next){
