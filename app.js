@@ -93,7 +93,7 @@ app.post('/',function(req,res, next){
 		//trim date
 		if (context.edit.date)
 		{
-			context.edit.trimDate = JSON.stringify(context.edit.date).substring(0, 11);
+			context.edit.trimDate = JSON.stringify(context.edit.date).substring(1, 11);
 			console.log(context.edit.trimDate);
 		}
 		console.log(JSON.stringify(context.edit));
