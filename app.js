@@ -180,8 +180,9 @@ app.get('/',function(req,res,next){
     }
     context.rows = rows;
 	console.log(JSON.stringify(context.rows));
-    res.render('newSession', context);
   });
+  
+      res.render('newSession', context);
 });
 
 
