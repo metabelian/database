@@ -31,27 +31,6 @@ var pool = mysql.createPool({
   database: 'student'
 });
 
-/*
-app.get('/',function(req,res,next){
-	var context = {};
-	console.log(req.body);
-	
-  	if(req.body.name = 'reset')
-	{
-		req.session.name = null;
-		res.render('newSession', context);
-		return;
-	}
-	
-	
-  //If there is no session, go to the main page.
-	if(!req.session.name)
-	{
-		res.render('newSession', context);
-		return;
-	}
-});
-*/
 
 
 app.post('/',function(req,res, next){
@@ -111,19 +90,13 @@ app.post('/',function(req,res, next){
 				});
   }
   
+  
   //if user adds new workout
   else if(req.body["newWorkout"])
   {
 	  //if user entered new data
 	  if(req.body.name != "")
 	  {
-		  /*
-		  var lbskg;
-		  if (req.body.lbskg)
-			  lbskg = true;
-		  else
-			  lbskg = false;
-		  */
 		  pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?, ?, ?, ?, ?)",
 					[req.body.name, req.body.reps, req.body.weight, req.body.date, req.body.lbskg], function(err, result)
 					{
@@ -132,9 +105,7 @@ app.post('/',function(req,res, next){
 							console.log("error");
 							next(err);
 							return;
-						}
-						
-						
+						}	
 					});
 	  }
   }
@@ -148,11 +119,8 @@ app.post('/',function(req,res, next){
 		}
 	
 		context.rows = rows;
-		console.log(JSON.stringify(context.rows));
 		res.render('newSession', context);
 	 });
-	 
-	 
 });
 
 
@@ -175,7 +143,7 @@ app.get('/reset-table',function(req,res,next){
   });
 });
 
-//get and display rows
+//clicking on homepage
 app.get('/',function(req,res,next){
 	console.log("Main-page");
   var context = {};
@@ -190,101 +158,6 @@ app.get('/',function(req,res,next){
   });
 });
 
-
-app.get('/count', function(req, res)
-{
-	var context = {};
-	context.count = req.session.count || 0;
-	req.session.count = context.count + 1;
-	res.render('count', context);
-});
-
-function getRand()
-{
-	var rand = {};
-	rand.random = Math.random();
-	return rand;
-}
-
-app.get('/random', function(req,res)
-{
-		res.render('random', getRand());
-});
-
-
-app.get('/getStuff', function(req,res)
-{
-	var qArray = [];
-	for (var p in req.query)
-	{
-			qArray.push({'name':p, 'value':req.query[p]});
-	}
-	
-	var context = {};
-	context.qList = qArray;
-	res.render('get', context);
-});
-
-app.post('/postStuff', function(req, res)
-{
-	var pArray = [];
-	
-	for (var p in req.body)
-	{
-		pArray.push({'name':p, 'value':req.body[p]});
-	}
-	
-	var context = {};
-	context.pList = pArray;
-	res.render('post', context);
-});
-
-app.get('/get-ex',function(req,res,next){
-  var context = {};
-  request('http://api.openweathermap.org/data/2.5/weather?q=corvallis&APPID=aa668dbfaaae00e93a4049f97d6755f8', function(err, response, body){
-    if(!err && response.statusCode < 400){
-      context.owm = JSON.parse(body);
-	  //console.log(body);
-      res.render('weather',context);
-    } else {
-      if(response){
-        console.log(response.statusCode);
-      }
-      next(err);
-    }
-  });
-});
-
-app.get('/google', function(req, res, next)
-{
-	request("http://www.google.com", function(error, response, body)
-	{
-		if (!error && response.statusCode < 400)
-			console.log(body);
-	});
-});
-
-app.get('/space', function(req,res,next)
-{
-	var content = {};
-	request("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=2&api_key=ppI8P43zk3TFvmZqTVgwSL1kQHQoqLzTcf0mxv9l", function(err, response, body)
-	{
-		if(!err && response.statusCode < 400)
-		{
-			console.log(body);
-			content.info = JSON.parse(body);
-			res.render('space', content);
-		}
-		else
-		{
-				if(response)
-				{
-					console.log(response.statusCode);
-				}
-		next(err);
-		}
-	});
-});
 
 //copied error messages from examples
 app.use(function(req,res){
