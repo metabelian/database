@@ -27,7 +27,7 @@
 		<th>Lbs/Kg</th>
 	</tr>
 	{{#each rows}}
-	<tr>
+	<tr id={{this.id}}>
 		<td>{{this.name}}</td>
 		<td>{{this.reps}}</td>
 		<td>{{this.weight}}</td>
@@ -79,7 +79,7 @@
 			<label for="lbskg">NEW LBS/KG (1/0):</label>
 			<input id="lbskg" type="number" name="lbskg" value={{this.edit.lbs}}>
 			<input type="hidden" name="index" value={{this.edit.id}}>
-			<input type="submit" name = "editWorkout">
+			<input type="submit" name = "editWorkout"ct>
 	</fieldset>
 </form>
 {{/if}}
