@@ -90,7 +90,6 @@ app.post('/',function(req,res, next){
 	
 		context.edit = rows[0];
 		console.log(JSON.stringify(context.edit));
-		res.render('newSession', context);
 	 });
   }
   
